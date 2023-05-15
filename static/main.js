@@ -21,6 +21,6 @@ function posting() {
     fetch('/teammate_posting', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
         alert(data['msg'])
         // 새로고침
-        window.location.reload()
+        // window.location.reload()
     })
 }
