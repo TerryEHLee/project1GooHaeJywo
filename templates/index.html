@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+  <title>GooHaeJywo</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/static/main.js"></script>
   
+</head>
+
+<body>
+  <div class="mytitle"> GooHaeJywo
+  </div>
+  <div>
+    <div class="box1">
+      <div class="mypost" id="post-box">
+        <div class="form-floating mb-3">
+          <input id="name" class="myname">
+          <label> 이름 </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="age" class="myage">
+          <label> 나이 </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="mbti" class="mymbti">
+          <label> MBTI </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="hobby" class="hobby">
+          <label> 취미 </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="image" type="url" class="myimage">
+          <label> 이미지URL </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="favorite" type="url" class="myfavoriteURL">
+          <label> 좋아하는 것 소개 URL </label>
+        </div>
+        <div class="mybtn">
+          <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
