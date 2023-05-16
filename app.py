@@ -1,21 +1,17 @@
-# pip install flask pymongo dnspython requests bs4
-#import certifi
-from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
+from pymongo import MongoClient
 
-
-#ca = certifi.where()
-
-client = MongoClient(
-    'mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority') #,tlsCAFile=ca
-db = client.dbsparta
-
-
+import certifi
 import requests
+import random
 from bs4 import BeautifulSoup
 
-import random   #m_id 난수 생성용
+ca = certifi.where()
+
+client = MongoClient('mongodb+srv://sparta:test@cluster0.ck1xgjf.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+db = client.dbsparta
+app = Flask(__name__)
+
 
 @app.route('/')
 def home():

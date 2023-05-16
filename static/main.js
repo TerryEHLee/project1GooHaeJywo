@@ -36,10 +36,10 @@ function listing() {
         let selfdesc = a["selfdesc"];
         let respect = a["respect"];
         let recentmovie = a["recentmovie"];
-        let m_id = a["m_id"]; 
+        let m_id = a["m_id"];
         let trailer = a['trailer'].substring(a['trailer'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
 
-        
+
 
         let temp_html = `<div class="mycards">
                                      <div class= id="cards-box">
@@ -106,7 +106,10 @@ function listing() {
                                               가장 최근에 본 영화는?
                                               <h6>${recentmovie}</h6>
                                               <!--트레일러 여는 버튼-->
-                                              <button onclick="open_trailer()">영화 트레일러?</button>
+                                              <span>
+                                                <i class="trailer_button fa-brands fa-youtube" onclick="open_trailer()"></i>
+                                              </span>
+                                            
                                               <!-- display:none은 처음에는 트레일러가 안 보이게 함. trailer-box는 id로 줄 경우 unique한 값을 줘야 하므로 class로 지정-->
                                               <div class="trailer-box" style="display: none">
                                                   <iframe 
@@ -149,7 +152,7 @@ function posting() {
   let respect = $("#respect").val();
   let recentmovie = $("#recentmovie").val();
 
-  let trailer =$('#trailer').val()
+  let trailer = $('#trailer').val()
 
   let formData = new FormData();
   formData.append("name_give", name);
@@ -173,13 +176,13 @@ function posting() {
 
 //응원댓글 Get
 function listingComment() {
-  fetch('/commenter').then((res) => res.json()).then((data) =>{
+  fetch('/commenter').then((res) => res.json()).then((data) => {
     let rows = data['result']
     $('#comment-box').empty()
     rows.forEach((a) => {
       let comment = a['comment']
       console.log(comment)
-      
+
       let temp_htmlL = `<div class="cmt">
                           <p>${comment}</p>
                         </div>`
@@ -192,10 +195,10 @@ function listingComment() {
 function postingComment() {
   let comment = $('#comment').val()
   let formData = new FormData();
-  formData.append("comment_give",comment);
+  formData.append("comment_give", comment);
   fetch('/commenter', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
-      alert(data['msg'])
+    alert(data['msg'])
 
-      window.location.reload()
+    window.location.reload()
   })
 }
