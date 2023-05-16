@@ -1,3 +1,17 @@
+function open_box() {
+  $("#post-box").show();
+}
+function close_box() {
+  $("#post-box").hide();
+}
+
+function open_trailer() {
+  $('.trailer-box').show()
+}
+function close_trailer() {
+  $('.trailer-box').hide()
+}
+
 $(document).ready(function () {
   listing();
 });
@@ -18,11 +32,15 @@ function listing() {
         let respect = a["respect"];
         let recentmovie = a["recentmovie"];
         let m_id = a["m_id"];
+        
+        let trailer = a['trailer'].substring(a['trailer'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
+
+        
 
         let temp_html = `<div class="mycards">
                                       <div class= id="cards-box">
                                       <!-- 카드 클릭하면 모달창 열림(data-bs-toggle 부터 "#exampleModal"까지의 코드임)-->
-                                          <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${name}">
+                                          <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
                                               <div class="card h-100">
                                                   <img src="https://t1.daumcdn.net/cfile/tistory/991688365C91ACC827" class="card-img-top">
                                                   <div class="card-body">
@@ -34,7 +52,7 @@ function listing() {
                                           </div>
                                       </div>
                                   </div>
-                                      <div class="modal fade" id="exampleModal-${name}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal fade" id="exampleModal-${m_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -64,7 +82,7 @@ function listing() {
                                               </li>
                                               <li class="member-content">
                                               가장 좋아하는 음식?
-                                              <span>${food}</span>
+                                              <h6>${food}</h6>
                                               </li>
                                               <li class="member-content">
                                               나의 MBTI 는?
@@ -82,12 +100,12 @@ function listing() {
                                               가장 최근에 본 영화는?
                                               <h6>${recentmovie}</h6>
                                               <!--트레일러 여는 버튼-->
-                                              <button onclick="open_trailer()" class="trailer-openbtn">영화 트레일러?</button>
-                                              <!-- display:none은 처음에는 트레일러가 안 보이게 함.-->
-                                              <div id="trailer-box" style="display: none">
+                                              <button onclick="open_trailer()">영화 트레일러?</button>
+                                              <!-- display:none은 처음에는 트레일러가 안 보이게 함. trailer-box는 id로 줄 경우 unique한 값을 줘야 하므로 class로 지정-->
+                                              <div class="trailer-box" style="display: none">
                                                   <iframe 
                                                       width=100% height=300px 
-                                                      src="https://www.youtube.com/embed/-yvNE5tnwv8" 
+                                                      src="https://www.youtube.com/embed/${trailer}" 
                                                       title="YouTube video player" frameborder="0" 
                                                       allow="accelerometer; autoplay; clipboard-write; 
                                                       encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -124,6 +142,9 @@ function posting() {
   let respect = $("#respect").val();
   let recentmovie = $("#recentmovie").val();
 
+  let trailer =$('#trailer').val()
+  console.log(trailer)
+
   let formData = new FormData();
   formData.append("name_give", name);
   formData.append("age_give", age);
@@ -133,6 +154,8 @@ function posting() {
   formData.append("selfdesc_give", selfdesc);
   formData.append("respect_give", respect);
   formData.append("recentmovie_give", recentmovie);
+
+  formData.append("trailer_give", trailer);
 
   fetch("/teammate", { method: "POST", body: formData })
     .then((res) => res.json())
@@ -154,16 +177,17 @@ function postingComment() {
   })
 }
 
-function open_box() {
-  $("#post-box").show();
-}
-function close_box() {
-  $("#post-box").hide();
-}
-
-function open_trailer() {
-  $('#trailer-box').show()
-}
-function close_trailer() {
-  $('#trailer-box').hide()
+function listing() {
+  fetch('/commenter').then((res) => res.json()).then((data) =>{
+    let rows = data['result']
+    $('#comment-box').empty()
+    rows.forEach((a) => {
+      let comment = a['comment']
+      
+      let temp_html = `<div class="cmt">
+                          <p>${comment}</p>
+                        </div>`
+      $('#comment-box').prepend(temp_html)
+    })
+  })
 }

@@ -30,7 +30,7 @@
 
   <body>
     <div class="mytitle">
-      <h1>9해조 팀원 소개</h1>
+      <h1>🙏🏻TEAM 구해조🤯</h1>
       <button onclick="open_box()">팀원 등록하기</button>
     </div>
 
@@ -100,6 +100,14 @@
         ></textarea>
         <label for="floatingTextarea2">가장 최근에 본 영화는?</label>
       </div>
+      <div class="form-floating">
+        <textarea
+          id="trailer"
+          class="form-control"
+          placeholder="Leave a comment here"
+        ></textarea>
+        <label for="floatingTextarea2">영화 트레일러</label>
+      </div>
       <div class="mybtns">
         <button onclick="posting()" type="button" class="btn btn-dark">
           기록하기
@@ -112,7 +120,8 @@
           닫기
         </button>
       </div>
-      <!--포스팅박스-->
+      
+      <!--멤바카드-->
     </div>
     <div class="mycards">
       <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
@@ -142,6 +151,12 @@
       <div>
         <button onclick="postingComment()" type="button" class="btn btn-secondary btn-sm">등록하기</button>
       </div>
+      <div id="comment-box">
+        <div class="cmt">
+          <p>여기에 코멘트가 들어갑니다</p>
+        </div>
+      </div>
+      
 
     <script src="/static/main.js"></script>
     <script
