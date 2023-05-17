@@ -1,21 +1,17 @@
-# pip install flask pymongo dnspython requests bs4
-#import certifi
-from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
+from pymongo import MongoClient
 
-
-#ca = certifi.where()
-
-client = MongoClient(
-    'mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority') #,tlsCAFile=ca
-db = client.dbsparta
-
-
+import certifi
 import requests
+import random
 from bs4 import BeautifulSoup
 
-import random   #m_id 난수 생성용
+ca = certifi.where()
+
+client = MongoClient('mongodb+srv://sparta:test@cluster0.ck1xgjf.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+db = client.dbsparta
+app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -31,9 +27,10 @@ def teammate_post():
     selfdesc_receive = request.form['selfdesc_give']
     respect_receive = request.form['respect_give']
     recentmovie_receive = request.form['recentmovie_give']
-    
     trailer_receive = request.form['trailer_give']
-    #m_id는 mongdodb의 teammate 컬렉션에서 검색된 문서들의 개수 + 1~9999사이의 난수이다.
+    image_receive = request.form['image_give']
+    
+    #m_id는 mongdodb의 teammate 컬렉션에서 검색된 문서들의 개수 + 1~9999사이의 난수이다.!
     m_id = len(list(db.teammate.find({})))+random.randrange(1, 9999)
 
     doc = {
@@ -46,13 +43,14 @@ def teammate_post():
         'respect':respect_receive,
         'recentmovie':recentmovie_receive,
         'trailer':trailer_receive,
+        'image': image_receive,
         'm_id':m_id
         
     }
 
     db.teammate.insert_one(doc)
 
-    return jsonify({'msg':'저장완료!'})
+    return jsonify({'msg':'저장완료!!'})
 
 @app.route("/teammate", methods=["GET"])
 def teammate_get():
@@ -66,7 +64,7 @@ def commenter_post():
             'comment': comment_receive
     }
     db.commenter.insert_one(doc)
-    return jsonify({'msg':'응원하기 완료!'})
+    return jsonify({'msg':'응원하기 완료!!'})
 
 @app.route("/commenter", methods=["GET"])
 def commenter_get():

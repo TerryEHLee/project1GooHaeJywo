@@ -32,9 +32,14 @@
   margin-top: 10px;
 }
 
-
 .mytitle > button:hover {
   border: 2px solid white;
+}
+
+.mycards {
+  margin: 20px auto 0px auto;
+  width: 50%;
+  max-width: 1200px;
 }
 
 .mypost {
@@ -59,7 +64,7 @@
 .mybtns > button {
   margin-right: 10px;
 }
-/*멤버 프로필 모달 스타일*/
+
 .modal-body-display {
   display: flex;
   justify-content: space-between;
@@ -84,82 +89,61 @@
   height: 100%;
 }
 
-.member-content-container {
-  display: block;
-  width: 50%;
-}
-
 .member-content {
   color: black;
   font-size: 20px;
   font-weight: 600;
+
   list-style: none;
 }
+
 .member-content > h6 {
   color: #808080;
   font-size: 16px;
   font-weight: 400;
+
   margin-top: 10px;
 }
+
 .member-content + .member-content {
   margin-top: 20px;
 }
+
 .member-content-container {
   display: block;
   width: 50%;
 }
+
 .member-content-container > h5 {
   color: black;
   font-size: 30px;
   font-weight: 600;
+  
   text-align: center;
   margin-bottom: 40px;
 }
+
 .trailer_button {
   text-decoration: none;
-  color: #B2071D;
+  color: #b2071d;
   font-size: 40px;
 }
 
+.member-content-container {
+  display: block;
+  width: 50%;
+}
+
 .check-trailerbox-space {
-  background-color: gray
+  background-color: gray;
 }
 
 .trailer-closebtn {
   float: right;
 }
 
-/*card-img-top까지 카드창 스타일*/
 .memberCards {
   margin: 20px auto 0px auto;
   width: 95%;
   max-width: 1200px;
-}
-
-.wrap {
-  max-width: 1200px;
-  width: 95%;
-
-  margin: 50px auto 0px auto;
-}
-
-.card {
-  border-radius: 20px;
-  height: 580px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.imageBox {
-  height: 373px;
-  overflow: hidden;
-  background-color: black;
-  display: flex;
-  align-items: center;
-}
-
-.card-img-top {
-  margin-top: -1px;
-  height: 375px;
-  object-fit: contain;
 }
