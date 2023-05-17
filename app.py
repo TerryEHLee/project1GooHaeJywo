@@ -1,14 +1,14 @@
 # pip install flask pymongo dnspython requests bs4
-import certifi
+#import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 
-ca = certifi.where()
+#ca = certifi.where()
 
 client = MongoClient(
-    'mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
+    'mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority') #,tlsCAFile=ca
 db = client.dbsparta
 
 

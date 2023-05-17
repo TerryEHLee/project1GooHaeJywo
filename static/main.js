@@ -16,6 +16,11 @@ $(document).ready(function () {
   listing();
 });
 
+$(document).ready(function () {
+  listingComment();
+});
+
+//팀원글 Get
 function listing() {
   fetch("/teammate")
     .then((res) => res.json())
@@ -31,14 +36,13 @@ function listing() {
         let selfdesc = a["selfdesc"];
         let respect = a["respect"];
         let recentmovie = a["recentmovie"];
-        let m_id = a["m_id"];
-        
+        let m_id = a["m_id"]; 
         let trailer = a['trailer'].substring(a['trailer'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
 
         
 
         let temp_html = `<div class="mycards">
-                                      <div class= id="cards-box">
+                                     <div class= id="cards-box">
                                       <!-- 카드 클릭하면 모달창 열림(data-bs-toggle 부터 "#exampleModal"까지의 코드임)-->
                                           <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
                                               <div class="card h-100">
@@ -52,6 +56,8 @@ function listing() {
                                           </div>
                                       </div>
                                   </div>
+
+
                                       <div class="modal fade" id="exampleModal-${m_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                       <div class="modal-content">
@@ -132,6 +138,7 @@ function listing() {
     });
 }
 
+//팀원글 Create
 function posting() {
   let name = $("#name").val();
   let age = $("#age").val();
@@ -143,7 +150,6 @@ function posting() {
   let recentmovie = $("#recentmovie").val();
 
   let trailer =$('#trailer').val()
-  console.log(trailer)
 
   let formData = new FormData();
   formData.append("name_give", name);
@@ -165,7 +171,24 @@ function posting() {
     });
 }
 
-//응원댓글 create
+//응원댓글 Get
+function listingComment() {
+  fetch('/commenter').then((res) => res.json()).then((data) =>{
+    let rows = data['result']
+    $('#comment-box').empty()
+    rows.forEach((a) => {
+      let comment = a['comment']
+      console.log(comment)
+      
+      let temp_htmlL = `<div class="cmt">
+                          <p>${comment}</p>
+                        </div>`
+      $('#comment-box').prepend(temp_htmlL)
+    })
+  })
+}
+
+//응원댓글 Create
 function postingComment() {
   let comment = $('#comment').val()
   let formData = new FormData();
@@ -174,20 +197,5 @@ function postingComment() {
       alert(data['msg'])
 
       window.location.reload()
-  })
-}
-
-function listing() {
-  fetch('/commenter').then((res) => res.json()).then((data) =>{
-    let rows = data['result']
-    $('#comment-box').empty()
-    rows.forEach((a) => {
-      let comment = a['comment']
-      
-      let temp_html = `<div class="cmt">
-                          <p>${comment}</p>
-                        </div>`
-      $('#comment-box').prepend(temp_html)
-    })
   })
 }
