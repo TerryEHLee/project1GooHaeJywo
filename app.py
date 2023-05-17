@@ -48,7 +48,7 @@ def teammate_post():
 
     db.teammate.insert_one(doc)
 
-    return jsonify({'msg':'저장완료!'})
+    return jsonify({'msg':'저장완료!!'})
 
 @app.route("/teammate", methods=["GET"])
 def teammate_get():
@@ -62,7 +62,7 @@ def commenter_post():
             'comment': comment_receive
     }
     db.commenter.insert_one(doc)
-    return jsonify({'msg':'응원하기 완료!'})
+    return jsonify({'msg':'응원하기 완료!!'})
 
 @app.route("/commenter", methods=["GET"])
 def commenter_get():
