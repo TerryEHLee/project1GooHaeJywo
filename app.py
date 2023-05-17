@@ -3,14 +3,14 @@
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 
-# import certifi
+import certifi
 import requests
 import random
 from bs4 import BeautifulSoup
 
-# ca = certifi.where()
+ca = certifi.where()
 
-client = MongoClient('mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority')#, tlsCAFile=ca
+client = MongoClient('mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 app = Flask(__name__)
 
@@ -61,8 +61,10 @@ def teammate_get():
 
 @app.route("/commenter", methods=["POST"])
 def commenter_post():
+    nickname_receive = request.form['nickname_give']
     comment_receive = request.form['comment_give']
     doc = {
+            'nickname': nickname_receive,
             'comment': comment_receive
     }
     db.commenter.insert_one(doc)
@@ -74,4 +76,4 @@ def commenter_get():
     return jsonify({'result':commenter_data})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5100, debug=True)
