@@ -49,8 +49,8 @@ function listing() {
                                                   <img src="https://t1.daumcdn.net/cfile/tistory/991688365C91ACC827" class="card-img-top">
                                                   <div class="card-body">
                                                       <h5 class="card-title">${name}</h5>
-                                                      <p>${food}</p>
-                                                      <p>${mbti}</p>
+                                                      <p>${age}</p>
+                                                      <p>${residence}</p>
                                                   </div>
                                               </div>
                                           </div>
