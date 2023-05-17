@@ -133,7 +133,10 @@ function listing() {
                                 가장 최근에 본 영화는?
                                 <h6>${recentmovie}</h6>
                                 <!--트레일러 여는 버튼-->
-                                <button onclick="open_trailer()">영화 트레일러?</button>
+                                <span>
+                                  <i class="trailer_button fa-brands fa-youtube" onclick="open_trailer()"></i>
+                                </span>
+                        
                                 <!-- display:none은 처음에는 트레일러가 안 보이게 함. trailer-box는 id로 줄 경우 unique한 값을 줘야 하므로 class로 지정-->
                                 <div class="trailer-box" style="display: none">
                                     <iframe 
