@@ -37,13 +37,6 @@
   border: 2px solid white;
 }
 
-
-.mycards {
-  margin: 20px auto 0px auto;
-  width: 50%;
-  max-width: 1200px;
-}
-
 .mypost {
   width: 95%;
   max-width: 500px;
@@ -66,7 +59,7 @@
 .mybtns > button {
   margin-right: 10px;
 }
-
+/*멤버 프로필 모달 스타일*/
 .modal-body-display {
   display: flex;
   justify-content: space-between;
@@ -94,20 +87,6 @@
 .member-content-container {
   display: block;
   width: 50%;
-}
-
-.check-trailerbox-space {
-  background-color: gray
-}
-
-.trailer-closebtn {
-  float: right;
-}
-
-.memberCards {
-  margin: 20px auto 0px auto;
-  width: 95%;
-  max-width: 1200px;
 }
 
 .member-content {
@@ -142,3 +121,45 @@
   font-size: 40px;
 }
 
+.check-trailerbox-space {
+  background-color: gray
+}
+
+.trailer-closebtn {
+  float: right;
+}
+
+/*card-img-top까지 카드창 스타일*/
+.memberCards {
+  margin: 20px auto 0px auto;
+  width: 95%;
+  max-width: 1200px;
+}
+
+.wrap {
+  max-width: 1200px;
+  width: 95%;
+
+  margin: 50px auto 0px auto;
+}
+
+.card {
+  border-radius: 20px;
+  height: 580px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.imageBox {
+  height: 373px;
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.card-img-top {
+  margin-top: -1px;
+  height: 375px;
+  object-fit: contain;
+}

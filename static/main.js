@@ -22,6 +22,14 @@ $(document).ready(function () {
   listingComment();
 });
 
+//응원글 작성란 버튼으로 여닫기
+function open_textBox() {
+  $('#form').show();
+}
+function close_textBox() {
+  $('#form').hide();
+}
+
 //팀원글 Get
 function listing() {
   fetch("/teammate")
@@ -41,50 +49,21 @@ function listing() {
         let m_id = a["m_id"]; 
         let trailer = a['trailer'].substring(a['trailer'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
 
-        // let temp_html = `<div class="mycards">
-        //                              <div id="cards-box">
-        //                               <!-- 카드 클릭하면 모달창 열림(data-bs-toggle 부터 "#exampleModal"까지의 코드임)-->
-        //                                   <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
-        //                                       <div class="card h-100">
-        //                                           <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" class="card-img-top">
-        //                                           <div class="card-body">
-        //                                               <h5 class="card-title">${name}</h5>
-        //                                               <p>${food}</p>
-        //                                               <p>${mbti}</p>
-        //                                           </div>
-        //                                       </div>
-        //                                   </div>
-        //                               </div>
-        //                           </div>
 
-
-        
-
-
-        let temp_html = `<div class="memberCards">
-                          <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
-                            <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
-                              <div class="card">
-                                <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2023/04/25/118992369.2.jpg" class="card-img-top">
-                                  <div class="card-body">
-                                    <h5 class="card-title">${name}</h5>
-                                    <p>${food}</p>
-                                    <p>${mbti}</p>
-                                  </div>
-                              </div>
+        let temp_html = `<div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
+                            <div class="card">
+                            <div class="imageBox">
+                                <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2023/04/25/118992369.2.jpg" class="card-img-top" alt="...">
                             </div>
-                          </div>
-                        </div>
-                        
-
-        
-        
-        
-        
-        
-        
-   
-
+                            <div class="card-body">
+                                <h5 class="card-title">${name}</h5>
+                                <p>${food}</p>
+                                <p>${food}</p>
+                                
+                                </div> 
+                            </div>
+                            </div>
+                          
                         <div class="modal fade" id="exampleModal-${m_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-xl">
                         <div class="modal-content">
@@ -136,7 +115,6 @@ function listing() {
                                 <span>
                                   <i class="trailer_button fa-brands fa-youtube" onclick="open_trailer()"></i>
                                 </span>
-                        
                                 <!-- display:none은 처음에는 트레일러가 안 보이게 함. trailer-box는 id로 줄 경우 unique한 값을 줘야 하므로 class로 지정-->
                                 <div class="trailer-box" style="display: none">
                                     <iframe 
@@ -148,7 +126,7 @@ function listing() {
                                     </iframe>
                                     <!--트레일러 닫는 버튼-->
                                     <div class="trailer-closebtn">
-                                    <button onclick="close_trailer()" type="button" class="btn btn-outline-dark">닫기</button>
+                                      <span><i class="trailer_button fa-brands fa-youtube" onclick="close_trailer()"></i></span>
                                     </div>
                                 </div>
                                 </ul>
@@ -235,10 +213,3 @@ function postingComment() {
   })
 }
 
-//응원글 작성란 버튼으로 여닫기
-function open_textBox() {
-  $('#form').show();
-}
-function close_textBox() {
-  $('#form').hide();
-}
