@@ -199,3 +199,11 @@ function postingComment() {
       window.location.reload()
   })
 }
+
+//응원글 작성란 버튼으로 여닫기
+function open_textBox() {
+  $('#form').show();
+}
+function close_textBox() {
+  $('#form').hide();
+}

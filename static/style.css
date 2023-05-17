@@ -32,11 +32,9 @@
   margin-top: 10px;
 }
 
-
 .mytitle > button:hover {
   border: 2px solid white;
 }
-
 
 .mycards {
   margin: 20px auto 0px auto;
@@ -97,7 +95,7 @@
 }
 
 .check-trailerbox-space {
-  background-color: gray
+  background-color: gray;
 }
 
 .trailer-closebtn {
