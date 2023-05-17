@@ -183,12 +183,18 @@ function listingComment() {
     let rows = data['result']
     $('#comment-box').empty()
     rows.forEach((a) => {
+      let nickname = a['nickname']
       let comment = a['comment']
       console.log(comment)
       
       let temp_htmlL = `<div class="cmt">
-                          <p>${comment}</p>
-                        </div>`
+                        <div class="card-body">
+                          <blockquote class="blockquote mb-0">
+                            <p>${comment}</p>
+                          <footer class="blockquote-footer">${nickname}</footer>
+                        </blockquote>
+                        </div>
+                      </div>`
       $('#comment-box').prepend(temp_htmlL)
     })
   })
@@ -196,8 +202,11 @@ function listingComment() {
 
 //응원댓글 Create
 function postingComment() {
-  let comment = $('#comment').val()
+  let nickname = $('#nickname').val();
+  let comment = $('#comment').val();
+  
   let formData = new FormData();
+  formData.append("nickname_give",nickname);
   formData.append("comment_give",comment);
   fetch('/commenter', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
       alert(data['msg'])
