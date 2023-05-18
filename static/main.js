@@ -192,7 +192,7 @@ function listingComment() {
                         <div class="card-body">
                           <blockquote class="blockquote mb-0">
                             <p>${comment}</p>
-                          <footer class="blockquote-footer">${nickname}</footer>
+                          <footer class="blockquote-footer">${nickname}</footer>                          
                         </blockquote>
                         <button onclick="modifyComment(${r_id})" type="button" class="btn btn-secondary btn-sm cmt-modify-btn">댓글 수정</button>
                         </div>
