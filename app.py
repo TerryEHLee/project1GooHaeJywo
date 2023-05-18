@@ -3,17 +3,16 @@
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 
-# import certifi
+import certifi
 import requests
 import random
 from bs4 import BeautifulSoup
 
-# ca = certifi.where()
+ca = certifi.where()
 
-client = MongoClient('mongodb+srv://sparta:test@cluster0.qihykt0.mongodb.net/?retryWrites=true&w=majority') #, tlsCAFile=ca
+client = MongoClient('mongodb+srv://sparta:test@cluster0.ck1xgjf.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 app = Flask(__name__)
-
 
 @app.route('/')
 def home():
@@ -91,6 +90,14 @@ def commenter_put(r_id):
         return jsonify({'msg': '수정 완료!!'})
     else:
         return jsonify({'msg': 'Invalid request.'})
+    
+#댓글 삭제
+@app.route("/comment_delete", methods=["POST"])
+def delete_post():
+    nickname_receive = request.form['nickname_give']
+    print(nickname_receive)
+    db.commenter.delete_one({'nickname':nickname_receive})
+    return jsonify({'msg':"삭제 완료."})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

@@ -192,7 +192,8 @@ function listingComment() {
                         <div class="card-body">
                           <blockquote class="blockquote mb-0">
                             <p>${comment}</p>
-                          <footer class="blockquote-footer">${nickname}</footer>                          
+                          <footer class="blockquote-footer">${nickname}</footer><i class="fa-solid fa-xmark" type="button"
+                          id="comment_delete" name="${nickname}" onclick="comment_delete('${nickname}')"></i>                          
                         </blockquote>
                         <button onclick="modifyComment(${r_id})" type="button" class="btn btn-secondary btn-sm cmt-modify-btn">댓글 수정</button>
                         </div>
@@ -242,4 +243,16 @@ function open_textBox() {
 }
 function close_textBox() {
   $('#form').hide();
+}
+
+// 댓글 삭제
+function comment_delete(nickname) {
+  console.log(nickname)
+  let formData = new FormData();
+  formData.append("nickname_give",nickname);
+  fetch('/comment_delete', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+      alert(data['msg'])
+      //새로고침
+      window.location.reload()
+  })
 }
