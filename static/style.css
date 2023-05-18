@@ -219,3 +219,8 @@
 .cmt-modify-btn {
   float: right;
 }
+
+.blockquote-footer {
+  display: inline-block;
+  margin-right: 20px;
+}
