@@ -192,9 +192,10 @@ function listingComment() {
                         <div class="card-body">
                           <blockquote class="blockquote mb-0">
                             <p>${comment}</p>
-                          <footer class="blockquote-footer">${nickname}</footer><i class="fa-solid fa-xmark" type="button"
-                          id="comment_delete" name="${nickname}" onclick="comment_delete('${nickname}')"></i>                          
+                          <footer class="blockquote-footer">${nickname}</footer>                        
                         </blockquote>
+                        <button class="btn btn-secondary btn-sm cmt-modify-btn" type="button"
+                          id="comment_delete" name="${nickname}" onclick="comment_delete('${nickname}')">댓글 삭제</button>
                         <button onclick="modifyComment(${r_id})" type="button" class="btn btn-secondary btn-sm cmt-modify-btn">댓글 수정</button>
                         </div>
                       </div>`
