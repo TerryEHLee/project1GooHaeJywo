@@ -61,7 +61,7 @@ function listing() {
                         <div class="modal-dialog modal-dialog-scrollable modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">멤버 프로필</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">MEMBER PROFILE</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body modal-body-display">
@@ -71,7 +71,7 @@ function listing() {
                             </div>
                     
                             <div class="member-content-container">
-                                <h5>멤버 TMI</h5>
+                                <h5>MEMBER TMI</h5>
                                 <ul>
                                 <li class="member-content">
                                 이름?
@@ -124,13 +124,9 @@ function listing() {
                                 </div>
                                 </ul>
                     
+                              </div>
                             </div>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+                          </div>
                         </div>
                     </div>`;
 
@@ -194,9 +190,11 @@ function listingComment() {
                             <p>${comment}</p>
                           <footer class="blockquote-footer">${nickname}</footer>                        
                         </blockquote>
-                        <button class="btn btn-secondary btn-sm cmt-modify-btn" type="button"
+                        <button type="button" class="btn btn-outline-danger cmt-modify-btn"
                           id="comment_delete" name="${nickname}" onclick="comment_delete('${nickname}')">댓글 삭제</button>
-                        <button onclick="modifyComment(${r_id})" type="button" class="btn btn-secondary btn-sm cmt-modify-btn">댓글 수정</button>
+                        <button type="button" class="btn btn-outline-danger cmt-modify-btn" onclick="modifyComment(${r_id})">댓글 수정</button>
+
+                        
                         </div>
                       </div>`
       $('#comment-box').prepend(temp_htmlL)
@@ -246,6 +244,21 @@ function close_textBox() {
   $('#form').hide();
 }
 
+//팀소개 버튼으로 여닫기
+function open_teamInfo() {
+  console.log("열리니")
+  let obj = document.getElementById("team-info");
+
+  if(obj.style.display == "none") {
+    obj.style.display = "block"
+  } else {
+    obj.style.display = "none"
+  }
+}
+function close_textBox() {
+  $('#form').hide();
+}
+
 // 댓글 삭제
 function comment_delete(nickname) {
   console.log(nickname)
@@ -256,4 +269,8 @@ function comment_delete(nickname) {
       //새로고침
       window.location.reload()
   })
+}
+
+function myFunction(x) {
+  x.classList.toggle("change");
 }

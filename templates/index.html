@@ -25,16 +25,67 @@
 
   <body>
     <!--대문-->
-    <div class="mytitle">
+    <div class="mytitle">     
       <!-- <h1>🙏🏻TEAM 구해조🤯</h1> -->
       <div class="title-img">
         <img src="https://ifh.cc/g/YnQ57j.jpg">
       </div>
-      <button onclick="open_box()">팀원 등록하기</button>
     </div>
 
-    <!--포스팅박스-->
-    <div class="mypost" id="post-box">
+    <!--팀 소개글 버튼-->
+    <div style="display:flex ; flex-direction: column;">
+    
+      <div class="container" onclick="myFunction(this); open_teamInfo()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        
+      </div>
+      <h1 style="color:white">팀소개</h1>
+    </div>
+
+
+
+    
+
+      
+    <div id="team-info" class="teambox" style="display: none">
+      <h1>We are GooHaeJywo ! (구해조 !)</h1>
+      <br>
+      <h2>WHY : 살고싶어서.</h2>
+      <br>
+      <h1>Our goal is SURVIVE</h1>
+      <br>
+      <h1> 
+        "GooHaeJywo" Ground Rules !
+        -
+      </h1>
+      <br>
+      <h5>
+        4. Our Blog <br>
+        은한 :      <br>
+        동준 :      <br>  
+        수아 :      <br>
+        성록 :
+      </h5>
+    </div>
+
+    <!--멤바카드 더미-->
+    <div class='memberCards'>
+      <div class="ment">
+        <h1>MEMBER LIST</h1>
+      </div>
+      <div id="cards-box" class="row row-cols-1 row-cols-md-4 g-4" style="cursor: pointer;">
+      </div>
+    </div>
+
+    <!--팀원 등록하기 버튼-->
+    <div class="cheerUpBtn">
+      <button class="cmtbtn" onclick="open_box()">팀원 등록하기</button>
+    </div>
+    
+    <!--팀원 포스팅박스-->
+    <div class="mypost" id="post-box" style="display: none">
       <div class="form-floating">
         <textarea
           id="image"
@@ -116,11 +167,12 @@
         <label for="floatingTextarea2">영화 트레일러</label>
       </div>
       <div class="form-floating">
-        <textarea
+        <input
           id="password"
+          type="password"
           class="form-control"
           placeholder="Leave a comment here"
-        ></textarea>
+        ></input>
         <label for="floatingTextarea2">패스워드</label>
       </div>
       <div class="mybtns">
@@ -136,19 +188,24 @@
         </button>
       </div>
     </div>
-      
-    <!--멤바카드 더미-->
-    <div class='memberCards'>
-      <div class="ment">
-        <h3>❗️구해조 멤버 LIST❗️</h3>
+    
+    
+
+    <div class="comment-container">
+
+    <!-- 응원 댓글 게시판 -->
+    <div id="comment-box">
+      <div class="cmt">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>여기에 코멘트가 들어갑니다</p>
+            <footer class="blockquote-footer">호빵맨</footer>
+          </blockquote>
+        </div>
       </div>
-    <div id="cards-box" class="row row-cols-1 row-cols-md-4 g-4">
-
     </div>
-  </div>
 
-    <!-- 응원글 -->
-
+    <!-- 응원글 등록 버튼 -->
     <div class="cheerUpBtn">
       <button onclick="open_textBox()" class="cmtbtn">9해조팀 응원하기</button>
     </div>
@@ -170,23 +227,13 @@
           <label for="floatingTextarea2">9해조 팀원들에게 응원글을 남겨주세요 !</label>
         </div>
         <div>
-          <button onclick="postingComment()" type="button" class="btn btn-secondary btn-sm">등록하기</button>
-          <button onclick="close_textBox()" type="button" class="btn btn-outline-dark">닫기</button>
+          <button onclick="postingComment()" type="button"  class="btn btn-outline-danger cmt-post-btn">등록하기</button>
+          <button onclick="close_textBox()" type="button"  class="btn btn-outline-danger cmt-post-btn">닫기</button>
         </div>
       </div>
     </div>
   
-        <div id="comment-box">
-          <div class="cmt">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-            <p>여기에 코멘트가 들어갑니다</p>
-            <footer class="blockquote-footer">호빵맨</footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      
+  </div>
 
     <script src="/static/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
