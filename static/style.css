@@ -52,7 +52,6 @@
   text-align: center;
   padding: 10px;
   border-radius: 10px;
-  
 }
 
 body{
@@ -269,6 +268,7 @@ body{
   box-shadow: 0px 0px 3px 0px rgb(57, 40, 40);
   padding: 20px;
   padding-bottom: 40px;
+  border: 1px solid gray;
 
   width: 95%;
   max-width: 500px;
@@ -296,10 +296,10 @@ body{
 
 .teambox {
   width: 1200px;
-  height: 600px;
-  border: 1px solid white;
+  height: 900px;
   color: white;
   margin: 0 auto;
+  text-align: center;
 }
 
 .col:hover {
@@ -312,7 +312,6 @@ body{
 .comment-container {
   width:1500px;
   height:100%;
-  border: 1px solid white;
   margin: 0 auto;
 }
 
@@ -320,25 +319,19 @@ body{
   background-color: white;
 }
 
-
-.random {
-  display: flex;
-  flex-direction: column;
-}
-.container {
+.team_infobox {
   display: inline-block;
   cursor: pointer;
-  font-size: 0;
-  letter-spacing: 0;
-  word-spacing: 0;
-}
+  }
 
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: rgb(144, 39, 39);
   margin: 6px 0;
   transition: 0.4s;
+  margin-right: 5px;
+  
 }
 
 .change .bar1 {
@@ -357,10 +350,10 @@ body{
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  background-color: black;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.page-link {
+  background-color: black;
+  color: rgb(144, 39, 39);
 }

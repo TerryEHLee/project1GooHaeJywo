@@ -30,17 +30,19 @@ function listing() {
       let rows = data["result"];
       $("#cards-box").empty();
       rows.forEach((a) => {
+        let image = a['image']; //image_URL!
         let name = a["name"];
         let age = a["age"];
         let residence = a["residence"];
-        let food = a["food"];
         let mbti = a["mbti"];
         let selfdesc = a["selfdesc"];
-        let respect = a["respect"];
-        let recentmovie = a["recentmovie"];
+        let why = a["why"];
+        let hobby = a["hobby"];
+        let workstyle = a["workstyle"];
+        let TMI = a["TMI"];
+        let favsong = a["favsong"];
+        let songurl = a['songurl'].substring(a['songurl'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
         let m_id = a["m_id"]; 
-        let trailer = a['trailer'].substring(a['trailer'].indexOf("=") + 1); //trailer URL에서 유튜브ID만 따옴
-        let image = a['image']; //image_URL!
 
 
         let temp_html = `<div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal-${m_id}">
@@ -51,7 +53,8 @@ function listing() {
                             <div class="card-body">
                                 <h5 class="card-title">${name}</h5>
                                 <p>${age}</p>
-                                <p>${residence}</p>
+                                <p>${mbti}</p>
+                                <p>${workstyle}</p>
                                 
                                 </div> 
                             </div>
@@ -74,36 +77,45 @@ function listing() {
                                 <h5>MEMBER TMI</h5>
                                 <ul>
                                 <li class="member-content">
-                                이름?
+                                이름
                                 <h6>${name}</h6>
                                 </li>
                                 <li class="member-content">
-                                나이?
+                                나이
                                 <h6>${age}</h6>
                                 </li>
                                 <li class="member-content">
-                                사는 곳?
+                                사는 곳
                                 <h6>${residence}</h6>
                                 </li>
                                 <li class="member-content">
-                                가장 좋아하는 음식?
-                                <h6>${food}</h6>
-                                </li>
-                                <li class="member-content">
-                                나의 MBTI 는?
+                                나의 MBTI 는
                                 <h6>${mbti}</h6>
                                 </li>
                                 <li class="member-content">
-                                나를 한마디로 표현한다면?
+                                나의 장점 한가지?
                                 <h6>${selfdesc}</h6>
                                 </li>
                                 <li class="member-content">
-                                존경하는 인물은?
-                                <h6>${respect}</h6>
+                                코딩 공부를 시작하게 된 이유
+                                <h6>${why}</h6>
                                 </li>
                                 <li class="member-content">
-                                가장 최근에 본 영화는?
-                                <h6>${recentmovie}</h6>
+                                스트레스를 극복하는 방법 or 취미
+                                <h6>${hobby}</h6>
+                                </li>
+                                </li>
+                                <li class="member-content">
+                                나의 협업 스타일
+                                <h6>${workstyle}</h6>
+                                </li>
+                                <li class="member-content">
+                                TMI 마음껏 적어주세요
+                                <h6>${TMI}</h6>
+                                </li>
+                                <li class="member-content">
+                                나의 노동요 or 좋아하는 노래
+                                <h6>${favsong}</h6>
                                 <!--트레일러 여는 버튼-->
                                 <span>
                                   <i class="trailer_button fa-brands fa-youtube" onclick="open_trailer()"></i>
@@ -112,7 +124,7 @@ function listing() {
                                 <div class="trailer-box" style="display: none">
                                     <iframe 
                                         width=100% height=300px 
-                                        src="https://www.youtube.com/embed/${trailer}" 
+                                        src="https://www.youtube.com/embed/${songurl}" 
                                         title="YouTube video player" frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; 
                                         encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -141,28 +153,34 @@ function posting() {
   if ($("#password").val() != 1111) {
     alert('패스워드가 틀립니다.')
   } else {
+  let image = $('#image').val();
   let name = $("#name").val();
   let age = $("#age").val();
   let residence = $("#residence").val();
-  let food = $("#food").val();
   let mbti = $("#mbti").val();
   let selfdesc = $("#selfdesc").val();
-  let respect = $("#respect").val();
-  let recentmovie = $("#recentmovie").val();
-  let trailer =$('#trailer').val()
-  let image = $('#image').val();
+  let why = $("#why").val();
+  let hobby = $("#hobby").val();
+  let workstyle = $("#workstyle").val();
+  let TMI =$('#TMI').val();
+  let favsong =$('#favsong').val();
+  let songurl =$('#songurl').val();
+  
 
   let formData = new FormData();
+  formData.append("image_give", image);
   formData.append("name_give", name);
   formData.append("age_give", age);
   formData.append("residence_give", residence);
-  formData.append("food_give", food);
   formData.append("mbti_give", mbti);
   formData.append("selfdesc_give", selfdesc);
-  formData.append("respect_give", respect);
-  formData.append("recentmovie_give", recentmovie);
-  formData.append("trailer_give", trailer);
-  formData.append("image_give", image);
+  formData.append("why_give", why);
+  formData.append("hobby_give", hobby);
+  formData.append("workstyle_give", workstyle);
+  formData.append("TMI_give", TMI);
+  formData.append("favsong_give", favsong);
+  formData.append("songurl_give", songurl);
+  
 
   fetch("/teammate", { method: "POST", body: formData })
     .then((res) => res.json())

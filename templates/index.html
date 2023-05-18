@@ -33,16 +33,14 @@
     </div>
 
     <!--팀 소개글 버튼-->
-    <div style="display:flex ; flex-direction: column;">
-    
-      <div class="container" onclick="myFunction(this); open_teamInfo()">
+    <div style="display:flex; justify-content: left; margin-left:355px;">
+      <div class="team_infobox" onclick="myFunction(this); open_teamInfo()">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
-        
       </div>
-      <h1 style="color:white">팀소개</h1>
-    </div>
+        <p style="color:rgb(144, 39, 39); font-size: 30px; margin-top: 1px;" >팀소개</p>
+      </div>
 
 
 
@@ -51,23 +49,28 @@
       
     <div id="team-info" class="teambox" style="display: none">
       <h1>We are GooHaeJywo ! (구해조 !)</h1>
-      <br>
-      <h2>WHY : 살고싶어서.</h2>
-      <br>
+      <br><br>
       <h1>Our goal is SURVIVE</h1>
-      <br>
+      <br><br>
       <h1> 
         "GooHaeJywo" Ground Rules !
-        -
       </h1>
-      <br>
-      <h5>
-        4. Our Blog <br>
-        은한 :      <br>
-        동준 :      <br>  
-        수아 :      <br>
-        성록 :
+      <h5 style="font: bold 1.2em/0.7em;">
+       <br><br>
+        No.1 : 주 100시간 이상 코딩합니다     <br><br>
+        No.2 :  협업하고 도움을 주고 받으며 성장합니다.     <br><br>  
+        No.3 : 좋은 매너로 말합니다.    <br><br>
+        No.4 : 나와 팀에 대해 최선을 다합니다. <br><br>
+        No.5 : 문제를 해결하는 과정을 즐깁니다.
       </h5>
+      <br><br><br>
+      <h6 style="font: bold 1.2em/0.7em 돋움체;">
+        Our Blog <br><br>
+        은한 : https://terryehlee.tistory.com/     <br><br>
+        동준 : https://url.kr/12cmo5     <br><br>  
+        수아 : https://url.kr/n8lx36     <br><br>
+        성록 : https://pigrok.tistory.com/
+      </h6>
     </div>
 
     <!--멤바카드 더미-->
@@ -100,7 +103,7 @@
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">이름?</label>
+        <label for="floatingTextarea2">이름</label>
       </div>
       <div class="form-floating">
         <textarea
@@ -108,7 +111,7 @@
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">나이?</label>
+        <label for="floatingTextarea2">나이</label>
       </div>
       <div class="form-floating">
         <textarea
@@ -116,15 +119,7 @@
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">사는 곳?</label>
-      </div>
-      <div class="form-floating">
-        <textarea
-          id="food"
-          class="form-control"
-          placeholder="Leave a comment here"
-        ></textarea>
-        <label for="floatingTextarea2">가장 좋아하는 음식?</label>
+        <label for="floatingTextarea2">사는 곳</label>
       </div>
       <div class="form-floating">
         <textarea
@@ -132,7 +127,7 @@
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">나의 MBTI는?</label>
+        <label for="floatingTextarea2">나의 MBTI는</label>
       </div>
       <div class="form-floating">
         <textarea
@@ -140,31 +135,55 @@
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">나를 한마디로 표현한다면?</label>
+        <label for="floatingTextarea2">나의 장점 한가지</label>
       </div>
       <div class="form-floating">
         <textarea
-          id="respect"
+          id="why"
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">존경하는 인물은?</label>
+        <label for="floatingTextarea2">코딩 공부를 시작하게 된 이유</label>
       </div>
       <div class="form-floating">
         <textarea
-          id="recentmovie"
+          id="hobby"
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">가장 최근에 본 영화는?</label>
+        <label for="floatingTextarea2">스트레스를 극복하는 방법 or 취미</label>
       </div>
       <div class="form-floating">
         <textarea
-          id="trailer"
+          id="workstyle"
           class="form-control"
           placeholder="Leave a comment here"
         ></textarea>
-        <label for="floatingTextarea2">영화 트레일러</label>
+        <label for="floatingTextarea2">나의 협업 스타일</label>
+      </div>
+      <div class="form-floating">
+        <textarea
+          id="TMI"
+          class="form-control"
+          placeholder="Leave a comment here"
+        ></textarea>
+        <label for="floatingTextarea2">TMI 마음껏 적어주세요</label>
+      </div>
+      <div class="form-floating">
+        <textarea
+          id="favsong"
+          class="form-control"
+          placeholder="Leave a comment here"
+        ></textarea>
+        <label for="floatingTextarea2">나의 노동요 or 좋아하는 노래</label>
+      </div>
+      <div class="form-floating">
+        <textarea
+          id="songurl"
+          class="form-control"
+          placeholder="Leave a comment here"
+        ></textarea>
+        <label for="floatingTextarea2">노래 URL</label>
       </div>
       <div class="form-floating">
         <input
@@ -176,16 +195,8 @@
         <label for="floatingTextarea2">패스워드</label>
       </div>
       <div class="mybtns">
-        <button onclick="posting()" type="button" class="btn btn-dark">
-          기록하기
-        </button>
-        <button
-          onclick="close_box()"
-          type="button"
-          class="btn btn-outline-dark"
-        >
-          닫기
-        </button>
+        <button onclick="posting()" type="button" class="btn btn-outline-danger cmt-post-btn">기록하기</button>
+        <button onclick="close_box()" type="button" class="btn btn-outline-danger cmt-post-btn">닫기</button>
       </div>
     </div>
     
@@ -252,13 +263,13 @@
     </ul>
   </nav>
   
-  <!-- 부트스트랩 CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- 부트스트랩 CSS
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
   
   <!-- 부트스트랩 JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 
 
     <script src="/static/main.js"></script>

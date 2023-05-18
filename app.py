@@ -7,7 +7,6 @@ from pymongo import MongoClient
 # import certifi
 import requests
 import random
-from bs4 import BeautifulSoup
 
 # ca = certifi.where()
 
@@ -24,33 +23,38 @@ def home():
 
 @app.route("/teammate", methods=["POST"])
 def teammate_post():
-    name_receive = request.form['name_give']
-    age_receive = request.form['age_give']
-    residence_receive = request.form['residence_give']
-    food_receive = request.form['food_give']
-    mbti_receive = request.form['mbti_give']
-    selfdesc_receive = request.form['selfdesc_give']
-    respect_receive = request.form['respect_give']
-    recentmovie_receive = request.form['recentmovie_give']
-    trailer_receive = request.form['trailer_give']
+
     image_receive = request.form['image_give']
+    name_receive = request.form["name_give"]
+    age_receive = request.form["age_give"]
+    residence_receive = request.form["residence_give"]
+    mbti_receive = request.form["mbti_give"]
+    selfdesc_receive = request.form["selfdesc_give"]
+    why_receive = request.form["why_give"]
+    hobby_receive = request.form["hobby_give"]
+    workstyle_receive = request.form["workstyle_give"]
+    TMI_receive =request.form['TMI_give']
+    favsong_receive = request.form['favsong_give']
+    songurl_receive = request.form['songurl_give']
 
     # m_id는 1~9999사이의 랜덤한 정수이다.!
     m_id = random.randrange(1, 9999)
 
     doc = {
+        'image': image_receive,
         'name': name_receive,
         'age': age_receive,
         'residence': residence_receive,
-        'food': food_receive,
         'mbti': mbti_receive,
         'selfdesc': selfdesc_receive,
-        'respect': respect_receive,
-        'recentmovie': recentmovie_receive,
-        'trailer': trailer_receive,
-        'image': image_receive,
+        'why': why_receive,
+        'hobby': hobby_receive,
+        'workstyle': workstyle_receive,
+        'TMI': TMI_receive,
+        'favsong': favsong_receive,
+        'songurl': songurl_receive,
+        
         'm_id': m_id
-
     }
 
     db.teammate.insert_one(doc)
