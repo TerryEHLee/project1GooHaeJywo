@@ -352,3 +352,15 @@ body{
   -webkit-transform: rotate(45deg) translate(-9px, -7px);
   transform: rotate(45deg) translate(-9px, -7px);
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
