@@ -257,3 +257,122 @@ function comment_delete(nickname) {
       window.location.reload()
   })
 }
+
+const commentsPerPage = 3; // Number of comments to display per page
+let currentPage = 1; // Current page number
+let commentsData = []; // Variable to store the comments data
+
+// Function to render the comments for the current page
+function renderComments(comments) {
+  const commentBox = document.getElementById('comment-box');
+  commentBox.innerHTML = ''; // Clear existing comments
+
+  comments.forEach((comment) => {
+    const { nickname, comment: text } = comment;
+
+    const commentItem = document.createElement('div');
+    commentItem.className = 'cmt';
+
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    const blockquote = document.createElement('blockquote');
+    blockquote.className = 'blockquote mb-0';
+
+    const commentText = document.createElement('p');
+    commentText.textContent = text;
+
+    const footer = document.createElement('footer');
+    footer.className = 'blockquote-footer';
+    footer.textContent = nickname;
+
+    blockquote.appendChild(commentText);
+    blockquote.appendChild(footer);
+    cardBody.appendChild(blockquote);
+    commentItem.appendChild(cardBody);
+
+    commentBox.appendChild(commentItem);
+  });
+}
+
+// Function to handle specific page
+function handlePage(pageNumber) {
+  currentPage = pageNumber;
+  renderComments(paginate(commentsData, commentsPerPage, currentPage));
+}
+
+// Function to handle pagination
+function handlePagination(comments) {
+  const pagination = document.getElementsByClassName('pagination')[0];
+  pagination.innerHTML = ''; // Clear pagination
+
+  const totalPages = Math.ceil(comments.length / commentsPerPage);
+
+  const previousButton = createPageLink('Previous', handlePrevPage);
+  pagination.appendChild(previousButton);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageLink = createPageLink(i, () => handlePage(i));
+    pagination.appendChild(pageLink);
+  }
+
+  const nextButton = createPageLink('Next', handleNextPage);
+  pagination.appendChild(nextButton);
+}
+
+// Function to create a page link
+function createPageLink(label, onClick) {
+  const pageItem = document.createElement('li');
+  pageItem.className = 'page-item';
+
+  const pageLink = document.createElement('a');
+  pageLink.className = 'page-link';
+  pageLink.href = '#';
+  pageLink.textContent = label;
+  pageLink.addEventListener('click', onClick);
+
+  pageItem.appendChild(pageLink);
+
+  return pageItem;
+}
+
+// Function to handle previous page
+function handlePrevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    renderComments(paginate(commentsData, commentsPerPage, currentPage));
+  }
+}
+
+// Function to handle next page
+function handleNextPage() {
+  const totalPages = Math.ceil(commentsData.length / commentsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderComments(paginate(commentsData, commentsPerPage, currentPage));
+  }
+}
+
+// Function to paginate the comments array
+function paginate(arr, itemsPerPage, pageNumber) {
+  const startIndex = (pageNumber - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return arr.slice(startIndex, endIndex);
+}
+
+// Function to fetch comments data and initialize pagination
+function fetchComments() {
+  fetch('/commenter')
+    .then((res) => res.json())
+    .then((data) => {
+      commentsData = data.result;
+      handlePagination(commentsData);
+      renderComments(paginate(commentsData, commentsPerPage, currentPage));
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+// Initialize the page
+fetchComments();
