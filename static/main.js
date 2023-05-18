@@ -185,14 +185,16 @@ function listingComment() {
     rows.forEach((a) => {
       let nickname = a['nickname']
       let comment = a['comment']
+      let r_id = a['r_id']; 
       console.log(comment)
       
       let temp_htmlL = `<div class="cmt">
                         <div class="card-body">
                           <blockquote class="blockquote mb-0">
                             <p>${comment}</p>
-                          <footer class="blockquote-footer">${nickname}</footer>
+                          <footer class="blockquote-footer">${nickname}</footer>                          
                         </blockquote>
+                        <button onclick="modifyComment(${r_id})" type="button" class="btn btn-secondary btn-sm cmt-modify-btn">댓글 수정</button>
                         </div>
                       </div>`
       $('#comment-box').prepend(temp_htmlL)
@@ -214,6 +216,25 @@ function postingComment() {
       window.location.reload()
   })
 }
+
+// 응원댓글 update (r_id 정보를 사용하여 댓글 특정)
+function modifyComment(r_id) {
+  let modifiedComment = prompt('댓글을 수정하세요.', '');
+  
+  if (modifiedComment) {
+    let formData = new FormData();
+    formData.append("comment_give", modifiedComment);
+    formData.append("replace", "true"); // replace parameter를 사용한다는데 아직 이해 못함.
+
+    fetch(`/commenter/${r_id}`, { method: "POST", body: formData }) // POST 메서드 사용
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data["msg"]);
+        window.location.reload();
+      });
+  }
+}
+
 
 //응원글 작성란 버튼으로 여닫기
 function open_textBox() {
