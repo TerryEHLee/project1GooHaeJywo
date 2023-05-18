@@ -215,3 +215,7 @@
   max-width: 500px;
   margin: auto;
 }
+
+.cmt-modify-btn {
+  float: right;
+}
