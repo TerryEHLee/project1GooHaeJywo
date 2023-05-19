@@ -142,7 +142,18 @@ function listing() {
                         </div>
                     </div>`;
 
-        $("#cards-box").append(temp_html);
+        $("#cards-box").prepend(temp_html);
+
+        $(`#exampleModal-${m_id}`).on('hide.bs.modal', function (e) {
+          // 모달 창 내부에 있는 iframe요소를 찾음.
+          let iframe = $(this).find('iframe');
+          // attr()메서드를 사용하여 iframe 요소의 src 속성값을 가져온 후,
+          let videoSrc = iframe.attr('src');
+          // iframe 요소의 src 속성값을 빈 문자열로 설정하여 영상 중지
+          iframe.attr('src', '');
+          // src 속성값을 이전값(videoSrc)으로 설정하여 원래 영상을 다시 시작할 수 있도록 함.
+          iframe.attr('src', videoSrc);
+      });
       });
     });
 }
